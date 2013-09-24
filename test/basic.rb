@@ -1,4 +1,4 @@
-require '../sputnik/sputnik'
+require_relative '../sputnik/sputnik'
 require 'test/unit'
 
 
