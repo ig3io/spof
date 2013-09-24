@@ -1,8 +1,9 @@
+require "spof/version"
 require 'net/http'
 require 'json'
 
 
-module Sputnik
+module Spof
 
   @@testing = false
 
@@ -14,7 +15,7 @@ module Sputnik
     @@testing
   end
 
-  class SputnikError < StandardError
+  class SpofError < StandardError
   end
 
   
@@ -42,7 +43,7 @@ module Sputnik
         :q => text,
         :page => page
         })
-      return uri.to_s if Sputnik.testing?
+      return uri.to_s if Spof.testing?
       response = Net::HTTP.get(uri)
       return JSON.parse(response, :symbolize_names => true)
     end
@@ -54,7 +55,7 @@ module Sputnik
     def self.album(spotify_uri, *extras)
       legal_extras = [:track, :trackdetail]
       extras.each do |e|
-        raise SputnikError, "Illegal extra" if not legal_extras.include?(e)
+        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
       end
       return get(spotify_uri, *extras)
     end
@@ -62,7 +63,7 @@ module Sputnik
     def self.artist(spotify_uri, *extras)
       legal_extras = [:album, :albumdetail]
       extras.each do |e|
-        raise SputnikError, "Illegal extra" if not legal_extras.include?(e)
+        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
       end
       return get(spotify_uri, *extras)
     end
@@ -78,7 +79,7 @@ module Sputnik
         :extras => extras
         })
       response = Net::HTTP.get(uri)
-      return uri.to_s if Sputnik.testing?
+      return uri.to_s if Spof.testing?
       return JSON.parse(response, :symbolize_names => true)
     end
 
