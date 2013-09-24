@@ -4,6 +4,17 @@ require 'json'
 
 module Sputnik
 
+  @@testing = false
+
+  def self.config(options = {})
+    @@testing = options[:testing] || false
+  end
+
+  def self.testing?
+    @@testing
+  end
+
+  
   module Search
 
     def self.album(text, page = 1)
@@ -11,12 +22,12 @@ module Sputnik
       return get_response(url, text)
     end
 
-    def artist(text, page = 1)
+    def self.artist(text, page = 1)
       url = 'http://ws.spotify.com/search/1/artist.json'
       return get_response(url, text)
     end
 
-    def track(text, page = 1)
+    def self.track(text, page = 1)
       url = 'http://ws.spotify.com/search/1/track.json'
       return get_response(url, text)
     end
@@ -28,6 +39,7 @@ module Sputnik
         :q => text,
         :page => page
         })
+      return uri.to_s if Sputnik.testing?
       response = Net::HTTP.get(uri)
       return JSON.parse(response, :symbolize_names => true)
     end
@@ -55,6 +67,7 @@ module Sputnik
         extras.merge({ :uri => spotify_uri })
         )
       response = Net::HTTP.get(uri)
+      return uri.to_s if Sputnik.testing?
       return JSON.parse(response, :symbolize_names => true)
     end
 
