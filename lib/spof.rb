@@ -23,17 +23,17 @@ module Spof
 
     def self.album(text, page = 1)
       url = 'http://ws.spotify.com/search/1/album.json'
-      return get_response(url, text)
+      return get_response(url, text, page)
     end
 
     def self.artist(text, page = 1)
       url = 'http://ws.spotify.com/search/1/artist.json'
-      return get_response(url, text)
+      return get_response(url, text, page)
     end
 
     def self.track(text, page = 1)
       url = 'http://ws.spotify.com/search/1/track.json'
-      return get_response(url, text)
+      return get_response(url, text, page)
     end
 
     private
