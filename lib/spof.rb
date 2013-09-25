@@ -1,7 +1,10 @@
 require "spof/version"
-require 'net/http'
-require 'json'
+require "search"
+require "lookup"
+require "wrapper"
 
+require "net/http"
+require "json"
 
 module Spof
 
@@ -16,73 +19,6 @@ module Spof
   end
 
   class SpofError < StandardError
-  end
-
-  
-  module Search
-
-    def self.album(text, page = 1)
-      url = 'http://ws.spotify.com/search/1/album.json'
-      return get_response(url, text, page)
-    end
-
-    def self.artist(text, page = 1)
-      url = 'http://ws.spotify.com/search/1/artist.json'
-      return get_response(url, text, page)
-    end
-
-    def self.track(text, page = 1)
-      url = 'http://ws.spotify.com/search/1/track.json'
-      return get_response(url, text, page)
-    end
-
-    private
-    def self.get_response(url, text, page = 1)
-      uri = URI(url)
-      uri.query = URI.encode_www_form({
-        :q => text,
-        :page => page
-        })
-      return uri.to_s if Spof.testing?
-      response = Net::HTTP.get(uri)
-      return JSON.parse(response, :symbolize_names => true)
-    end
-
-  end
-
-  module Lookup
-
-    def self.album(spotify_uri, *extras)
-      legal_extras = [:track, :trackdetail]
-      extras.each do |e|
-        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
-      end
-      return get(spotify_uri, *extras)
-    end
-
-    def self.artist(spotify_uri, *extras)
-      legal_extras = [:album, :albumdetail]
-      extras.each do |e|
-        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
-      end
-      return get(spotify_uri, *extras)
-    end
-
-    def self.track(spotify_uri)
-      return get(spotify_uri)
-    end
-
-    def self.get(spotify_uri, *extras)
-      uri = URI('http://ws.spotify.com/lookup/1/.json')
-      uri.query = URI.encode_www_form({
-        :uri => spotify_uri,
-        :extras => extras
-        })
-      response = Net::HTTP.get(uri)
-      return uri.to_s if Spof.testing?
-      return JSON.parse(response, :symbolize_names => true)
-    end
-
   end
 
 end
