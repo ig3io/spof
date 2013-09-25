@@ -6,7 +6,7 @@ require 'spof/version'
 Gem::Specification.new do |spec|
   spec.name          = "spof"
   spec.version       = Spof::VERSION
-  spec.authors       = ["ignaciocontreras"]
+  spec.authors       = ["Ignacio Contreras"]
   spec.email         = ["ignacio@ignacio.cat"]
   spec.description   = %q{Spotify Search & Lookup API Ruby wrapper}
   spec.summary       = %q{Spotify Search & Lookup}
