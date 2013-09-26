@@ -5,8 +5,9 @@ module Spof
 
 	class Wrapper
 
-		def initialize
-			@type = :all
+		def initialize(options = {})
+			@type = nil
+			Spof.config(options)
 		end
 
 		def album
@@ -26,7 +27,9 @@ module Spof
 
 		def search(text)
 			if [:album, :artist, :track].include?(@type)
-				Spof::Search.send(type, text)
+				Spof::Search.send(@type, text)
+			else
+				raise Spof::SpofError, "Invalid search type"
 			end
 		end
 
