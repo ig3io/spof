@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/ignaciocontreras/spof.png?label=ready)](https://waffle.io/ignaciocontreras/spof)  
 Spof
 ====
 
@@ -7,6 +6,8 @@ Ruby wrapper for the Spotify Search & Lookup API. Under development.
 [![Build Status](https://travis-ci.org/ignaciocontreras/spof.png?branch=master)](https://travis-ci.org/ignaciocontreras/spof)
 
 [![Gem Version](https://badge.fury.io/rb/spof.png)](http://badge.fury.io/rb/spof)
+
+[![Stories in Ready](https://badge.waffle.io/ignaciocontreras/spof.png?label=ready)](https://waffle.io/ignaciocontreras/spof)  
 
 
 Usage
