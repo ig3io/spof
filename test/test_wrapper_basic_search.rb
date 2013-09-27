@@ -25,4 +25,17 @@ class TestBasicWrapper < Test::Unit::TestCase
     assert_equal expected, real
   end
 
+  def test_all_search_response
+    expected = []
+    page = 0
+    loop do
+      res = Spof::Search.album('nine inch nails', page)[:albums]
+      page += 1
+      expected |= res
+      break if res.empty?
+    end
+    real = @w.album.all.search('nine inch nails')
+    assert_equal expected, real
+  end
+
 end
