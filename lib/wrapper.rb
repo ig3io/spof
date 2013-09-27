@@ -25,8 +25,9 @@ module Spof
 			self
 		end
 
-		def all(num)
+		def all
 			@all = true
+			self
 		end
 
 		def search(text)
