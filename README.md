@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/ignaciocontreras/spof.png?label=ready)](https://waffle.io/ignaciocontreras/spof)  
 Spof
 ====
 
