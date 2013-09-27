@@ -7,7 +7,7 @@ Ruby wrapper for the Spotify Search & Lookup API. Under development.
 
 [![Gem Version](https://badge.fury.io/rb/spof.png)](http://badge.fury.io/rb/spof)
 
-[![Stories in Ready](https://badge.waffle.io/ignaciocontreras/spof.png?label=ready)](https://waffle.io/ignaciocontreras/spof)  
+<!-- [![Stories in Ready](https://badge.waffle.io/ignaciocontreras/spof.png?label=ready)](https://waffle.io/ignaciocontreras/spof)  -->
 
 
 Usage
