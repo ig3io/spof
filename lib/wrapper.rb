@@ -34,27 +34,24 @@ module Spof
 			@type ||= :all
 			@all ||= false
 
-			continue = true
-
 			result = []
-			while continue
+			page = 0
+			loop do
 				res = case @type
 							when :album
-								Spof::Search.album(text)[:albums]
+								Spof::Search.album(text, page)[:albums]
 							when :artist
-								Spof::Search.artist(text)[:artists]
+								Spof::Search.artist(text, page)[:artists]
 							when :track
-								Spof::Search.track(text)[:tracks]
+								Spof::Search.track(text, page)[:tracks]
 							when :all?
 							else
 								raise Spof::SpofError, "Invalid search type #{@type}"
 							end
 				result |= res
-				if res.empty?
-					continue = false
-				else
-					continue = @all
-				end
+				page += 1
+				break unless @all
+				break if res.empty?
 			end
 
 			@type = nil # TODO: reset search type?
