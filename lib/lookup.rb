@@ -3,18 +3,12 @@ module Spof
   module Lookup
 
     def self.album(spotify_uri, *extras)
-      legal_extras = [:track, :trackdetail]
-      extras.each do |e|
-        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
-      end
+      check_extras(extras, [:track, :trackdetail])
       return get(spotify_uri, *extras)
     end
 
     def self.artist(spotify_uri, *extras)
-      legal_extras = [:album, :albumdetail]
-      extras.each do |e|
-        raise SpofError, "Illegal extra" if not legal_extras.include?(e)
-      end
+      check_extras(extras,  [:album, :albumdetail])
       return get(spotify_uri, *extras)
     end
 
@@ -31,6 +25,13 @@ module Spof
       response = Net::HTTP.get(uri)
       return uri.to_s if Spof.testing?
       return JSON.parse(response, :symbolize_names => true)
+    end
+
+    private
+    def self.check_extras(extras, legal_extras)
+      extras.each do |e|
+        raise Spof::SpofError, "Illegal extra" if not legal_extras.include?(e)
+      end
     end
 
   end
