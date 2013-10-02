@@ -47,6 +47,14 @@ For both `Lookup` and `Search` methods, the result contains the parsed JSON resp
 r = JSON.parse(spotify_api_json_response, :symbolize_names => true) # hash with symbols as keys
 ```
 
+```ruby
+w = Spof::Wrapper.new
+w.album('nine inch nails') # album/artist/track
+# => first page album results
+w.all.album('nine inch nails')
+# => list of all found albums
+```
+
 License
 -------
 
