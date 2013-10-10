@@ -57,11 +57,11 @@ r = Spof::Lookup.artist('spotify:uri:artist:ab...c', :trackdetail)
 
 For both `Lookup` and `Search` methods, the result contains the parsed JSON response. For now it's like:
 
-### Wrapper
-
 ```ruby  
 r = JSON.parse(spotify_api_json_response, :symbolize_names => true) # hash with symbols as keys
 ```
+
+### Wrapper
 
 ```ruby
 w = Spof::Wrapper.new
