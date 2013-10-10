@@ -21,10 +21,24 @@ require 'spof'
 
 
 ```ruby
-r = Spof::Search.artist('nine inch nails') # or album or track
+Spof::Search.artist('nine inch nails') # or album or track
+```
 
-# a page can be specified
-r = Spof::Search.track('life on mars', page = 2)
+Returns:
+```
+{
+  :info => {
+    :num_results => 1,
+    :limit => 100,
+    :offset => 0,
+    :query => "nine inch nails",
+    :type => "artist",
+    :page => 1
+    },
+  :artists => [
+    { :href =>"spotify:artist:0X380XXQSNBYuleKzav5UO", :name => "Nine Inch Nails", :popularity => "0.64"}
+    ]
+}
 ```
 
 ### Lookup
