@@ -65,9 +65,9 @@ r = JSON.parse(spotify_api_json_response, :symbolize_names => true) # hash with 
 
 ```ruby
 w = Spof::Wrapper.new
-w.album('nine inch nails') # album/artist/track
-# => first page album results
-w.all.album('nine inch nails')
+w.artist.search('nine inch nails') # album/artist/track. First page album results
+# => [{:href=>"spotify:artist:0X380XXQSNBYuleKzav5UO", :name=>"Nine Inch Nails", :popularity=>"0.64"}]
+w.all.album.search('nine inch nails')
 # => list of all found albums
 ```
 
