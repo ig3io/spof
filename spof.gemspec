@@ -6,11 +6,11 @@ require 'spof/version'
 Gem::Specification.new do |spec|
   spec.name          = "spof"
   spec.version       = Spof::VERSION
-  spec.authors       = ["Ignacio Contreras"]
+  spec.authors       = ["Ignacio Contreras Pinilla"]
   spec.email         = ["ignacio@ignacio.cat"]
   spec.description   = %q{Spotify Search & Lookup API Ruby wrapper}
   spec.summary       = %q{Spotify Search & Lookup}
-  spec.homepage      = "http://github.com/ignaciocontreras/spof"
+  spec.homepage      = "http://github.com/ignc/spof"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
