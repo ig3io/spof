@@ -3,11 +3,11 @@ Spof
 
 Ruby wrapper for the Spotify Search & Lookup API. Under development.
 
-[![Build Status](https://travis-ci.org/ignc/spof.png?branch=master)](https://travis-ci.org/ignc/spof)
+[![Build Status](https://travis-ci.org/iconpin/spof.png?branch=master)](https://travis-ci.org/iconpin/spof)
 
 [![Gem Version](https://badge.fury.io/rb/spof.png)](http://badge.fury.io/rb/spof)
 
-[![Stories in Ready](https://badge.waffle.io/ignc/spof.png?label=ready)](https://waffle.io/ignc/spof)
+[![Stories in Ready](https://badge.waffle.io/iconpin/spof.png?label=ready)](https://waffle.io/iconpin/spof)
 
 
 Usage
